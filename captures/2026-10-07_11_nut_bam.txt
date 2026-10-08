@@ -1,0 +1,93 @@
+## 00 nen - khong bam gi, hai can o giua  (60 goi)
+x30  D5 80 80 83 80 20 20 20 20 70 04 00 00   (giong nen)
+x30  DD 80 80 83 80 20 20 20 20 70 04 00 00   (giong nen)
+
+## 01 nut toc do - bam 1 lan  (60 goi)
+x30  DD 80 80 83 80 20 20 20 20 70 05 00 00   byte 10: 04 -> 05
+x30  D5 80 80 83 80 20 20 20 20 70 05 00 00   byte 10: 04 -> 05
+
+## 02 nut toc do - bam lan 2  (60 goi)
+x31  DD 80 80 83 80 20 20 20 20 70 06 00 00   byte 10: 04 -> 06
+x29  D5 80 80 83 80 20 20 20 20 70 06 00 00   byte 10: 04 -> 06
+
+## 03 nut toc do - giu 3 giay (den)  (60 goi)
+x30  DD 80 80 83 80 20 20 20 20 70 06 00 80   byte 10: 04 -> 06; byte 12: 00 -> 80
+x30  D5 80 80 83 80 20 20 20 20 70 06 00 80   byte 10: 04 -> 06; byte 12: 00 -> 80
+
+## 04 nut headless - bam 1 lan  (60 goi)
+x30  DD 80 80 83 80 20 20 20 20 70 06 00 80   byte 10: 04 -> 06; byte 12: 00 -> 80
+x30  D5 80 80 83 80 20 20 20 20 70 06 00 80   byte 10: 04 -> 06; byte 12: 00 -> 80
+
+## 04b nut headless - dang giu  (60 goi)
+x15  DD 80 80 83 80 20 20 20 20 70 26 20 80   byte 10: 04 -> 26; byte 11: 00 -> 20; byte 12: 00 -> 80
+x15  D5 80 80 83 80 20 20 20 20 70 26 20 80   byte 10: 04 -> 26; byte 11: 00 -> 20; byte 12: 00 -> 80
+x11  D5 80 80 83 80 20 20 20 20 70 06 00 80   byte 10: 04 -> 06; byte 12: 00 -> 80
+x10  DD 80 80 83 80 20 20 20 20 70 06 00 80   byte 10: 04 -> 06; byte 12: 00 -> 80
+x5   DD 80 80 83 80 20 20 20 20 70 26 00 80   byte 10: 04 -> 26; byte 12: 00 -> 80
+x4   D5 80 80 83 80 20 20 20 20 70 26 00 80   byte 10: 04 -> 26; byte 12: 00 -> 80
+
+## 04c nut headless - sau khi tha  (60 goi)
+x30  DD 80 80 83 80 20 20 20 20 70 06 20 80   byte 10: 04 -> 06; byte 11: 00 -> 20; byte 12: 00 -> 80
+x30  D5 80 80 83 80 20 20 20 20 70 06 20 80   byte 10: 04 -> 06; byte 11: 00 -> 20; byte 12: 00 -> 80
+
+## 06 nut lat 360 - dang giu  (60 goi)
+x21  DD 80 80 83 80 20 20 20 20 70 06 20 81   byte 10: 04 -> 06; byte 11: 00 -> 20; byte 12: 00 -> 81
+x20  D5 80 80 83 80 20 20 20 20 70 06 20 81   byte 10: 04 -> 06; byte 11: 00 -> 20; byte 12: 00 -> 81
+x10  D5 80 80 83 80 20 20 20 20 70 06 20 80   byte 10: 04 -> 06; byte 11: 00 -> 20; byte 12: 00 -> 80
+x9   DD 80 80 83 80 20 20 20 20 70 06 20 80   byte 10: 04 -> 06; byte 11: 00 -> 20; byte 12: 00 -> 80
+
+## 07 nut tranh vat can / xoay - dang giu  (60 goi)
+x30  DD 80 80 83 80 20 20 20 20 70 06 20 80   byte 10: 04 -> 06; byte 11: 00 -> 20; byte 12: 00 -> 80
+x30  D5 80 80 83 80 20 20 20 20 70 06 20 80   byte 10: 04 -> 06; byte 11: 00 -> 20; byte 12: 00 -> 80
+
+## 08 nut tren phai - dang giu  (60 goi)
+x30  DD 80 80 83 80 20 20 20 20 70 06 21 80   byte 10: 04 -> 06; byte 11: 00 -> 21; byte 12: 00 -> 80
+x30  D5 80 80 83 80 20 20 20 20 70 06 21 80   byte 10: 04 -> 06; byte 11: 00 -> 21; byte 12: 00 -> 80
+
+## 08b nut tren phai (reset) - sau khi tha  (60 goi)
+x30  D5 80 80 83 80 20 20 20 20 70 06 21 80   byte 10: 04 -> 06; byte 11: 00 -> 21; byte 12: 00 -> 80
+x30  DD 80 80 83 80 20 20 20 20 70 06 21 80   byte 10: 04 -> 06; byte 11: 00 -> 21; byte 12: 00 -> 80
+
+## 09 nut giua - dang giu  (60 goi)
+x30  DD 80 80 83 80 20 20 20 20 70 06 21 80   byte 10: 04 -> 06; byte 11: 00 -> 21; byte 12: 00 -> 80
+x30  D5 80 80 83 80 20 20 20 20 70 06 21 80   byte 10: 04 -> 06; byte 11: 00 -> 21; byte 12: 00 -> 80
+
+## 10 nut duoi phai (can chinh) - dang giu  (60 goi)
+x30  DD 80 80 83 80 20 20 20 20 70 06 21 80   byte 10: 04 -> 06; byte 11: 00 -> 21; byte 12: 00 -> 80
+x30  D5 80 80 83 80 20 20 20 20 70 06 21 80   byte 10: 04 -> 06; byte 11: 00 -> 21; byte 12: 00 -> 80
+
+## 10b can chinh: giu nut duoi phai + day can phai sang trai 3 lan, da tha  (60 goi)
+x30  D5 80 80 83 80 20 20 20 20 70 06 21 80   byte 10: 04 -> 06; byte 11: 00 -> 21; byte 12: 00 -> 80
+x30  DD 80 80 83 80 20 20 20 20 70 06 21 80   byte 10: 04 -> 06; byte 11: 00 -> 21; byte 12: 00 -> 80
+
+## 11 bam mot lan roi tha: duoi trai, giua, duoi phai, tren phai, tren trai (60 s)
+  0.1 s  dau: D5 80 80 83 80 20 20 20 20 70 06 21 80
+  6.0 s  byte 10: 06 -> 86
+ 11.0 s  byte 11: 21 -> A1
+ 20.6 s  byte 11: A1 -> A0
+ 24.4 s  byte 11: A0 -> 80
+
+## 12 moi nut bam 2 lan (~1 s, cach 4 s): vai trai, vai phai, tren trai, tren phai, giua, duoi trai, duoi phai (90 s)
+  0.0 s  dau: D5 80 80 83 80 20 20 20 20 70 86 80 80
+  4.0 s  byte 10: 86 -> 84
+  6.0 s  byte 10: 84 -> 85
+  7.9 s  byte 12: 80 -> 81
+ 10.7 s  byte 12: 81 -> 80
+ 13.0 s  byte 12: 80 -> 81
+ 14.2 s  byte 12: 81 -> 80
+ 19.8 s  byte 10: 85 -> A5
+ 23.9 s  byte 10: A5 -> 85
+ 28.4 s  byte 11: 80 -> 81
+ 30.1 s  byte 11: 81 -> 80
+ 33.7 s  byte 11: 80 -> D0
+ 34.4 s  byte 11: D0 -> 80
+ 37.6 s  byte 12: 80 -> 82
+ 39.6 s  byte 12: 82 -> 80
+
+## 13 chi nut giua, bam 2 lan cach 8 s (25 s)
+  0.1 s  dau: D5 80 80 83 80 20 20 20 20 70 85 80 80
+
+## 13b chi nut giua, bam o giay ~5 va ~15 (30 s)
+  0.1 s  dau: D5 80 80 83 80 20 20 20 20 70 85 D0 80
+  8.5 s  byte 11: D0 -> 80
+

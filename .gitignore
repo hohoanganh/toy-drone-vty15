@@ -1,0 +1,14 @@
+# Anh goc do phan giai day du: khong dua vao repo, ban thu nho cung ten nam o images/
+images/_goc/
+
+# Python
+__pycache__/
+*.pyc
+
+# He dieu hanh
+desktop.ini
+Thumbs.db
+.DS_Store
+
+# Ban dong goi exe (build lai bang software/build_exe.bat)
+software/dist/

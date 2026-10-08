@@ -1,0 +1,44 @@
+Bat SPI giua MCU va chip radio tren bo drone, tu luc nhan nut nguon (chua bat tay dieu khien).
+Cot: so khung, thoi gian tu khung truoc (us), so byte, du lieu hex (byte dau la lenh).
+Ban firmware bat luc nay con loc "khung giong khung ngay truoc" (x24 = lap 24 lan).
+
+  0 +    0 us  0:
+  1 +1601280 us  2: 3D 20
+  2 +   60 us  2: 3C 00
+  3 +   62 us  1: D6
+  4 +   54 us  2: 20 8B
+  5 + 3188 us  2: 23 AC
+  6 + 2115 us  2: 3D 10
+  7 +   62 us  2: 50 53
+  8 +   60 us  2: 3F 20
+  9 +   62 us  2: 33 01
+ 10 +   60 us  3: 3C CF B2
+ 11 +   68 us  2: 50 53
+ 12 +   60 us  1: D5
+ 13 + 2126 us  1: D6
+ 14 + 1057 us  2: 06 50  x24
+ 15 +25400 us  2: 06 70
+ 16 +   16 us  2: 26 40
+ 17 +   60 us  2: 50 53
+ 18 +   62 us  4: 23 20 98 75
+ 19 +   72 us  2: 50 53
+ 20 +   62 us  6: 2A 4D 41 49 4E CC
+ 21 +   85 us  2: 3D 15
+ 22 +   62 us  2: 21 00
+ 23 +   60 us  2: 25 05
+ 24 +   62 us  2: 22 09
+ 25 +   60 us  2: 26 47
+ 26 +   62 us  2: 3C 01
+ 27 +   60 us  2: 20 8B
+ 28 +   62 us  1: E1
+ 29 +   54 us  1: D6
+ 30 +   55 us  1: E2
+ 31 +   56 us  2: 27 70
+ 32 +   60 us  1: D5
+ 33 +11286 us  2: 07 0E
+ 34 +   17 us  1: D6
+ 35 +   55 us  1: E2
+ 36 +   55 us  2: 27 70
+ 37 +   61 us  1: D5
+ 38 +  867 us  2: 07 0E
+ (khung 34-38 lap lai moi ~1 ms cho toi het bo dem: 07 0E / D6 / E2 / 27 70 / D5)
