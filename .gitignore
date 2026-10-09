@@ -12,3 +12,8 @@ Thumbs.db
 
 # Ban dong goi exe (build lai bang software/pc/build_exe.bat)
 software/pc/dist/
+
+# App Android: repo chi de file cai (APK) va README; ma nguon khong dua len
+software/android/*
+!software/android/README.md
+!software/android/*.apk

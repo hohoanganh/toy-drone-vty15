@@ -19,7 +19,8 @@ Dien thoai ──USB OTG──> CH340 ──UART 115200──> AK Base Kit 2.1 (
 
 ## Tải về
 
-**[ToyDroneRemote_v0.1.0-debug.apk](https://github.com/hohoanganh/toy-drone-vty15/releases/download/android-v0.1.0-debug/ToyDroneRemote_v0.1.0-debug.apk)** (11,8 MB) — bản thử, trang phát hành:
+**[ToyDroneRemote_v0.1.0-debug.apk](ToyDroneRemote_v0.1.0-debug.apk)** (11,8 MB) — bản thử, nằm ngay trong thư mục
+này. Cùng file đó có ở trang phát hành
 [android-v0.1.0-debug](https://github.com/hohoanganh/toy-drone-vty15/releases/tag/android-v0.1.0-debug).
 
 Tải file về điện thoại, mở file và cho phép cài từ nguồn này. Đây là bản debug, ký bằng khoá debug
@@ -40,7 +41,7 @@ firmware kit, khung sóng, ghép cặp, nhảy tần — giữ nguyên không đ
 Hệ quả phải chấp nhận: **điện thoại bị nối dây với kit khi bay.** Kit nhỏ, có thể dán cạnh điện
 thoại hoặc buộc vào dây đeo. Nếu thấy vướng thì hướng đi tiếp là làm một cầu không dây
 (ESP32 nhận BLE/WiFi từ điện thoại rồi nói sang cùng console `rc` này) — phần
-[`Transport`](app/src/main/java/vn/epcb/toydrone/link/Transport.kt) đã tách sẵn ra interface cho
+đường truyền trong app đã tách sẵn ra interface cho
 việc đó, chỉ thêm một lớp, `KitLink` và giao diện không phải sửa.
 
 ## Yêu cầu
@@ -104,54 +105,6 @@ app PC. **Console**: gõ mọi lệnh `rc` của kit và xem dòng trả về.
 - Kit mất nguồn (rút cáp) thì drone mất sóng và tự tắt motor sau khoảng 2 giây.
 - Chỉ thử trên thiết bị của chính mình.
 
-## Build
-
-Mở thư mục `software/android` bằng Android Studio, hoặc dùng wrapper:
-
-```bash
-./gradlew testDebugUnitTest assembleDebug
-```
-
-Nếu thư mục dự án nằm trong một thư mục đồng bộ đám mây thì nên để thư mục `build` ra ngoài (hàng
-nghìn file nhỏ, đồng bộ chậm và hay bị khoá lúc đang ghi). Đặt một trong hai:
-
-```bash
-set TOYDRONE_BUILD_ROOT=D:\build\ToyDroneRemote
-```
-
-hoặc `./gradlew -PbuildRoot=...`. Không đặt gì thì build ngay trong thư mục dự án như thường.
-
-APK ra ở `<buildRoot>/app/outputs/apk/debug/app-debug.apk` (11,25 MB).
-
-### Phiên bản đã build
-
-JDK là JBR đi kèm Android Studio (OpenJDK 25).
-
-| Thành phần | Phiên bản |
-|---|---|
-| AGP | 9.4.1 |
-| Gradle | 9.8.1 |
-| Kotlin | **2.2.10 — do AGP quyết định**, xem bên dưới |
-| compileSdk / targetSdk | 37 (Android 17) |
-| minSdk | 26 (Android 8.0) |
-| Compose BOM | 2026.09.00 |
-| [usb-serial-for-android](https://github.com/mik3y/usb-serial-for-android) | 3.11.0 (qua JitPack) |
-
-### Ba bẫy của AGP 9 đã gặp khi build (09/10/2026)
-
-1. **Không được áp plugin `org.jetbrains.kotlin.android`.** AGP 9.0 trở lên đã tích hợp Kotlin;
-   áp thêm plugin đó là build fail ngay ở dòng đầu. Xem
-   [tài liệu](https://developer.android.com/build/migrate-to-built-in-kotlin).
-2. **Nhưng plugin Compose Compiler thì vẫn bắt buộc** khi `buildFeatures.compose = true`. Và nó
-   phải đúng phiên bản Kotlin mà AGP kéo theo: POM của AGP 9.4.1 ghi `kotlin-gradle-plugin 2.2.10`,
-   nên Compose plugin là `2.2.10`, **không phải bản Kotlin mới nhất**.
-3. **Alias trong version catalog không được chứa `for`.** Alias `usb-serial-for-android` sinh ra
-   accessor `libs.usb.serial.for.android`, mà `for` là từ khoá Kotlin → Gradle Kotlin DSL báo
-   `Expecting '(' to open a loop range`. Đổi thành `usbserial`.
-
-Cũng không cần khai `kotlin.compilerOptions.jvmTarget`: với Kotlin tích hợp, nó mặc định lấy theo
-`android.compileOptions.targetCompatibility`.
-
 ## Đã kiểm và chưa kiểm (09/10/2026)
 
 **Build xanh, 15/15 test đạt, app chạy trên điện thoại và nối được kit (`Kit: ready`).
@@ -204,14 +157,12 @@ chạy, kit không reset. Nhiều khả năng cũng do lỗi 3 nhưng **chưa ch
 thô. Nếu sau bản đọc chặn mà còn gặp lại thì nguyên nhân nằm chỗ khác (UART phát của kit, đường
 CH340). Dù sao app không còn dựa vào trạng thái kit để quyết định gửi gói.
 
-## Tệp
+## Trong thư mục này
 
 | Tệp | Việc |
 |---|---|
-| `proto/Packet.kt` | Hai cần và các cờ → 13 byte. Port của `../pc/packet.py`, nhưng bất biến |
-| `link/Transport.kt` | Interface đường truyền — chỗ để sau cắm thêm cầu không dây |
-| `link/UsbSerialTransport.kt` | USB OTG → CH340, 115200 8N1, xin quyền truy cập thiết bị |
-| `link/KitLink.kt` | Luồng đọc/ghi console, bộ phát gói đều đặn, đọc dòng trạng thái. Port của `../pc/kit_link.py` |
-| `RemoteViewModel.kt` | Vòng 30 ms, STOP, xung FLIP, vòng đời app |
-| `ui/Joystick.kt` | Cần ảo: chạm là bám, thả thì về giữa |
-| `ui/RemoteScreen.kt` | Giao diện ngang: hai cần, cờ, Console, Raw bits |
+| `ToyDroneRemote_v0.1.0-debug.apk` | File cài cho điện thoại |
+| `README.md` | Trang này |
+
+Repo chỉ để file cài. Mã nguồn (Kotlin + Jetpack Compose) là bản port của
+[`../pc/packet.py`](../pc/packet.py) và [`../pc/kit_link.py`](../pc/kit_link.py), gửi cùng các lệnh `rc` xuống kit.
