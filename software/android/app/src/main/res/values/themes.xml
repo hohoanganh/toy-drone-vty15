@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Giao dien do Compose ve; theme nay chi lo mau nen luc app dang mo
+         va bo thanh tieu de. Khong dung AppCompat nen khong can phu thuoc them. -->
+    <style name="Theme.ToyDroneRemote" parent="@android:style/Theme.Material.NoActionBar">
+        <item name="android:windowBackground">@color/bg</item>
+        <item name="android:statusBarColor">@color/bg</item>
+        <item name="android:navigationBarColor">@color/bg</item>
+    </style>
+</resources>

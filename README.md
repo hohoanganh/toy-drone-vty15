@@ -126,15 +126,25 @@ với ±275 kHz, và tay gốc xen kẽ byte 0 `DD` / `D5`.
 ## Lái từ máy tính
 
 <p>
-  <a href="software/README.md"><img src="images/15_app_pc.png" alt="Toy Drone Remote" width="720"></a>
+  <a href="software/pc/README.md"><img src="images/15_app_pc.png" alt="Toy Drone Remote" width="720"></a>
 </p>
 
-**[Toy Drone Remote](software/README.md)** — app Python/Tkinter với hai cần ảo, bàn phím và các nút
+**[Toy Drone Remote](software/pc/README.md)** — app Python/Tkinter với hai cần ảo, bàn phím và các nút
 chức năng. Máy tính dựng gói 13 byte và gửi 20 lần mỗi giây; kit 2.1 phát ra sóng mỗi 8 ms.
 
 ```
 PC ──USB/UART──> AK Base Kit 2.1 (nRF24L01+) ──2,4 GHz──> drone
 ```
+
+**[Bản cho Android](software/android/README.md)** — cùng kiến trúc, điện thoại nối kit qua USB OTG
+thay cho cổng COM. Điện thoại không phát trực tiếp được giao thức của drone nên kit vẫn phải nằm
+giữa. Build xanh và 15/15 test đạt (gói 13 byte đối chiếu với giá trị đo trên sóng, dòng trạng thái
+đối chiếu với kit thật); app đã chạy trên điện thoại, nối được kit và **đã lái một chuyến có hạ cánh (09/10/2026)**; drone phản
+ứng từng trục thế nào thì chưa ghi nhận.
+
+<p align="center">
+  <a href="software/android/README.md"><img src="images/24_app_android_voi_kit.jpg" alt="App Android nối AK Base Kit 2.1 qua USB OTG" width="720"></a>
+</p>
 
 ## Những lần đoán sai, và phép đo nào đã sửa
 
@@ -159,7 +169,7 @@ Vì vậy tài liệu ở đây ghi mức chắc chắn cho từng mục, và gh
 | [`docs/protocol.md`](docs/protocol.md) | Đặc tả giao thức: khung trên sóng, CRC, ghép cặp, nhảy tần, gói điều khiển, bảng cờ |
 | [`docs/bench-power.md`](docs/bench-power.md) | Bàn thử: nguồn bàn thay pin, dòng theo từng lệnh, camera, tiếng motor, nghe sóng bằng ESP-SDR |
 | [`docs/remote-ak-kit-2.1.md`](docs/remote-ak-kit-2.1.md) | Tay điều khiển trên AK Base Kit 2.1: nút, menu, lệnh console |
-| [`software/`](software/README.md) | App Toy Drone Remote và cách đóng gói thành exe |
+| [`software/`](software/README.md) | Hai app lái: [`software/pc/`](software/pc/README.md) là Toy Drone Remote cho máy tính và cách đóng gói thành exe; [`software/android/`](software/android/README.md) là bản cho điện thoại, nối kit qua USB OTG (build xanh, 15/15 test đạt, đã lái một chuyến 09/10/2026) |
 | [`tools/`](tools/) | Script đo và phân tích: console của kit, nguồn, camera, micro, SDR |
 | [`firmware/`](firmware/) | Bản sao mã nguồn phần radio và tay điều khiển, cùng file firmware đã nạp. Mã đầy đủ ở [ak-mcu-base](https://github.com/hohoanganh/ak-mcu-base) |
 | [`captures/`](captures/) | Dữ liệu gốc: SPI phía drone, gói thô từ nRF24L01+, dòng điện theo từng lệnh |

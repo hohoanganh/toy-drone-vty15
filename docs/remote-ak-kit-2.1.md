@@ -75,7 +75,7 @@ python tools/ak_fw.py --port COMx flash kit21_remote_app_v1.3.7_2026-10-08.img
 | `rc t <ms>` | Khoảng cách giữa hai gói, 2–20 ms. Mặc định 8 và **nên để 8**: lệch 1 ms là drone hụt một phần tư số gói |
 
 Ba lệnh `rc on/off`, `rc p`, `rc wd` (thêm 08/10/2026) là để app trên máy tính lái thay ba nút: xem
-[`../software/`](../software/README.md).
+[`../software/pc/`](../software/pc/README.md).
 
 ## Đã kiểm (07/10, drone tháo motor và đèn, đọc phía drone qua SPI)
 
