@@ -140,7 +140,7 @@ PC ──USB/UART──> AK Base Kit 2.1 (nRF24L01+) ──2,4 GHz──> drone
 thay cho cổng COM. Điện thoại không phát trực tiếp được giao thức của drone nên kit vẫn phải nằm
 giữa. Build xanh và 15/15 test đạt (gói 13 byte đối chiếu với giá trị đo trên sóng, dòng trạng thái
 đối chiếu với kit thật); app đã chạy trên điện thoại, nối được kit và **đã lái một chuyến có hạ cánh (09/10/2026)**; drone phản
-ứng từng trục thế nào thì chưa ghi nhận.
+ứng từng trục thế nào thì chưa ghi nhận. Tải file cài: **[APK bản thử 0.1.0](https://github.com/hohoanganh/toy-drone-vty15/releases/tag/android-v0.1.0-debug)**.
 
 <p align="center">
   <a href="software/android/README.md"><img src="images/24_app_android_voi_kit.jpg" alt="App Android nối AK Base Kit 2.1 qua USB OTG" width="720"></a>

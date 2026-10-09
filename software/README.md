@@ -10,7 +10,7 @@ app (máy tính hoặc điện thoại) ──USB/UART 115200──> AK Base Kit
 | Thư mục | App | Nối với kit | Tình trạng |
 |---|---|---|---|
 | [`pc/`](pc/README.md) | Toy Drone Remote cho máy tính, Python/Tkinter, đóng gói được thành exe | Cổng COM | Đã lái thật (08/10/2026) |
-| [`android/`](android/README.md) | Toy Drone Remote cho điện thoại, Kotlin/Compose | USB OTG | Đã lái một chuyến có hạ cánh (09/10/2026); chưa ghi nhận từng trục |
+| [`android/`](android/README.md) | Toy Drone Remote cho điện thoại, Kotlin/Compose | USB OTG | Đã lái một chuyến có hạ cánh (09/10/2026); chưa ghi nhận từng trục. [Tải APK bản thử](https://github.com/hohoanganh/toy-drone-vty15/releases/tag/android-v0.1.0-debug) |
 
 ![Điện thoại và kit](../images/24_app_android_voi_kit.jpg)
 

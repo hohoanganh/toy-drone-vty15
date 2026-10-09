@@ -17,6 +17,16 @@ Dien thoai ──USB OTG──> CH340 ──UART 115200──> AK Base Kit 2.1 (
       "rc p <13 byte>" 20 lan/giay                    mot goi moi 8 ms
 ```
 
+## Tải về
+
+**[ToyDroneRemote_v0.1.0-debug.apk](https://github.com/hohoanganh/toy-drone-vty15/releases/download/android-v0.1.0-debug/ToyDroneRemote_v0.1.0-debug.apk)** (11,8 MB) — bản thử, trang phát hành:
+[android-v0.1.0-debug](https://github.com/hohoanganh/toy-drone-vty15/releases/tag/android-v0.1.0-debug).
+
+Tải file về điện thoại, mở file và cho phép cài từ nguồn này. Đây là bản debug, ký bằng khoá debug
+của máy build chứ chưa phải khoá phát hành: bản sau có thể không cài đè được, khi đó gỡ bản cũ rồi
+cài lại. SHA-256 của file:
+`504d268a9ac299cc6f8ade38f289113726a37b22960789de253c035112e9c71c`.
+
 ## Vì sao phải có kit ở giữa
 
 **Điện thoại không nói trực tiếp được với drone.** Giao thức của drone là GFSK 1 Mbps khung kiểu
