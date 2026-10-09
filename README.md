@@ -174,7 +174,7 @@ Vì vậy tài liệu ở đây ghi mức chắc chắn cho từng mục, và gh
 | [`firmware/`](firmware/) | Bản sao mã nguồn phần radio và tay điều khiển, cùng file firmware đã nạp. Mã đầy đủ ở [ak-mcu-base](https://github.com/hohoanganh/ak-mcu-base) |
 | [`captures/`](captures/) | Dữ liệu gốc: SPI phía drone, gói thô từ nRF24L01+, dòng điện theo từng lệnh |
 | [`docs/notes/`](docs/notes/) | Nhật ký dò chân bo và giải mã, kể cả những nhận định về sau bị bác |
-| [Báo cáo một trang](https://hohoanganh.github.io/toy-drone-vty15/) | Tổng kết phần giải mã giao thức, chốt ngày 07/10/2026 (trước khi thử motor và bay) |
+| [Báo cáo một trang](https://hohoanganh.github.io/toy-drone-vty15/) | Trang giới thiệu ngắn: ý tưởng, cách làm việc với Claude Code, hành trình và cách tự làm lại (cập nhật 09/10/2026) |
 
 ## Giới hạn
 
