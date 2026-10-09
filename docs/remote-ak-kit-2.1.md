@@ -1,6 +1,6 @@
 # Tay điều khiển thử nghiệm trên AK Base Kit 2.1
 
-*07/10/2026. Một công cụ thử từng lệnh, không phải tay lái để bay: mỗi mục trong menu đổi một
+*07/10/2026. Một công cụ thử từng lệnh, không phải tay điều khiển để bay: mỗi mục trong menu đổi một
 trường hoặc một bit của gói 13 byte, để nhìn drone phản ứng với từng thứ một.*
 
 ![Màn hình](../images/14_tay_dieu_khien_kit21_man_hinh.png)
@@ -74,7 +74,7 @@ python tools/ak_fw.py --port COMx flash kit21_remote_app_v1.3.7_2026-10-08.img
 | `rc a 0` / `rc a 1` | `1`: byte 0 xen kẽ `DD` (PID lẻ) / `D5` (PID chẵn) như tay điều khiển gốc. `0` (mặc định): luôn `DD` |
 | `rc t <ms>` | Khoảng cách giữa hai gói, 2–20 ms. Mặc định 8 và **nên để 8**: lệch 1 ms là drone hụt một phần tư số gói |
 
-Ba lệnh `rc on/off`, `rc p`, `rc wd` (thêm 08/10/2026) là để app trên máy tính lái thay ba nút: xem
+Ba lệnh `rc on/off`, `rc p`, `rc wd` (thêm 08/10/2026) là để app trên máy tính điều khiển thay ba nút: xem
 [`../software/pc/`](../software/pc/README.md).
 
 ## Đã kiểm (07/10, drone tháo motor và đèn, đọc phía drone qua SPI)

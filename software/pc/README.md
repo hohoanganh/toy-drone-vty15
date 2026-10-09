@@ -1,4 +1,4 @@
-# Toy Drone Remote — lái drone từ máy tính
+# Toy Drone Remote — điều khiển drone từ máy tính
 
 App Python/Tkinter nối với tay điều khiển thử nghiệm ([AK Base Kit 2.1](../../docs/remote-ak-kit-2.1.md))
 qua cổng COM. Máy tính dựng gói 13 byte từ hai cần ảo và các nút chức năng; kit phát gói đó ra sóng
@@ -12,7 +12,7 @@ PC (app này) ──USB/UART 115200──> AK Base Kit 2.1 ──2,4 GHz──> 
 ```
 
 Bản cho điện thoại, cùng kiến trúc nhưng nối kit qua USB OTG: [`../android/`](../android/README.md)
-(Kotlin + Compose; build xanh, 15/15 test đạt, **chưa lái thử**).
+(Kotlin + Compose; đã bay một chuyến 09/10/2026).
 
 ## Chạy
 
@@ -31,7 +31,7 @@ và không bật LINK.
 
 1. Chọn cổng COM của kit (CH340), bấm **Connect**. Chấm trạng thái phải hiện `Kit: ready`.
 2. Bật nguồn drone, bấm **LINK ON**. Đèn drone chuyển từ nháy sang sáng đứng.
-3. Lái bằng chuột (kéo hai cần) hoặc bàn phím.
+3. Điều khiển bằng chuột (kéo hai cần) hoặc bàn phím.
 
 | Phím | Việc |
 |---|---|
@@ -61,7 +61,7 @@ gõ được mọi lệnh console của kit; các dòng lặp (`rc`, `rc p`) ẩ
 
 | Tệp | Việc |
 |---|---|
-| `toy_drone_remote.py` | Giao diện | Đã lái thật một lần (08/10/2026) bằng bản 0.1.1 |
+| `toy_drone_remote.py` | Giao diện | Đã bay thật một lần (08/10/2026) bằng bản 0.1.1 |
 | `kit_link.py` | Nối cổng COM, luồng đọc/ghi, bộ phát gói đều đặn. Không dùng Tkinter; `python kit_link.py COMx` in trạng thái kit |
 | `packet.py` | Hai cần và các cờ → 13 byte |
 | `build_exe.bat`, `build_exe.py` | Đóng gói thành file exe bằng PyInstaller; tên file lấy từ `APP_VER` |
@@ -78,6 +78,6 @@ cổng COM.
 | | |
 |---|---|
 | Đường PC → kit | Đã kiểm trên kit thật: bật LINK, đổi cờ và roll, kit phát đúng gói; ngừng gửi thì kit về ga `00` sau 0,5 s; gửi lại thì nối lại; đóng thì kit tắt phát |
-| Giao diện | Đã lái thật một lần (08/10/2026) bằng bản 0.1.1 | Mới xem qua ảnh chụp; **chưa có ai lái thử bằng chuột và phím** |
-| Drone | **Đã bay thật:** cất cánh, nghiêng trái/phải, tiến/lùi, bật tắt đèn và chế độ tránh vật cản hoạt động; người lái đánh giá app dùng được. Xoay (yaw), hạ cánh bằng phím `S`, nút STOP và bộ canh lúc đang bay chưa ghi nhận. Số liệu thử trên bàn: [`../../docs/bench-power.md`](../../docs/bench-power.md) |
+| Giao diện | Đã bay thật một lần (08/10/2026) bằng bản 0.1.1 | Mới xem qua ảnh chụp; **chưa có ai bay thử bằng chuột và phím** |
+| Drone | **Đã bay thật:** cất cánh, nghiêng trái/phải, tiến/lùi, bật tắt đèn và chế độ tránh vật cản hoạt động; người điều khiển đánh giá app dùng được. Xoay (yaw), hạ cánh bằng phím `S`, nút STOP và bộ canh lúc đang bay chưa ghi nhận. Số liệu thử trên bàn: [`../../docs/bench-power.md`](../../docs/bench-power.md) |
 | Giá trị hai đầu của các trục | `09` / `F7` suy ra đối xứng từ phía đã đo trên tay gốc. Roll và pitch đã bay được cả hai phía với các giá trị này; yaw chưa ghi nhận |

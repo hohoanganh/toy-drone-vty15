@@ -1,4 +1,4 @@
-# Toy Drone Remote cho Android — lái drone từ điện thoại
+# Toy Drone Remote cho Android — điều khiển drone từ điện thoại
 
 App Android (Kotlin + Jetpack Compose) làm cùng việc với [app PC](../pc/README.md): dựng gói 13 byte
 từ hai cần ảo và các cờ, rồi đẩy sang [AK Base Kit 2.1](../../docs/remote-ak-kit-2.1.md) để kit phát
@@ -73,7 +73,7 @@ OTG thì phải dùng OTG có cổng cấp nguồn riêng.
    (Cắm kit vào là Android tự mở app này, nhờ `device_filter.xml` khớp VID/PID của CH340.)
 2. Nếu app đang mở sẵn thì bấm **Connect**. Chấm trạng thái phải hiện `Kit: ready`.
 3. Bật nguồn drone, bấm **LINK ON**. Đèn drone chuyển từ nháy sang sáng đứng.
-4. Lái bằng hai cần:
+4. Điều khiển bằng hai cần:
 
 | Cần | Trục |
 |---|---|
@@ -99,7 +99,7 @@ app PC. **Console**: gõ mọi lệnh `rc` của kit và xem dòng trả về.
 - Bộ canh nằm trong kit: app treo, bị tắt, **bị đẩy ra nền**, hay rút cáp quá 0,5 giây thì kit tự
   phát ga `00` và bíp dài (`Link: PC LOST`).
 - App giữ màn hình luôn sáng khi đang mở. Dù vậy, cuộc gọi đến hoặc bấm Home giữa chuyến bay sẽ
-  làm app ra nền → kit kéo ga về `00` → **drone rơi**. Đây là hệ quả không tránh được của việc lái
+  làm app ra nền → kit kéo ga về `00` → **drone rơi**. Đây là hệ quả không tránh được của việc điều khiển
   bằng điện thoại; không có cách nào bảo đảm một app Android luôn ở tiền cảnh.
 - Đang phát sóng thì bấm Back lần đầu chỉ tắt LINK, không thoát app.
 - Kit mất nguồn (rút cáp) thì drone mất sóng và tự tắt motor sau khoảng 2 giây.
@@ -108,7 +108,7 @@ app PC. **Console**: gõ mọi lệnh `rc` của kit và xem dòng trả về.
 ## Đã kiểm và chưa kiểm (09/10/2026)
 
 **Build xanh, 15/15 test đạt, app chạy trên điện thoại và nối được kit (`Kit: ready`).
-Đã lái một chuyến có hạ cánh; chưa ghi nhận drone phản ứng từng trục thế nào.**
+Đã bay một chuyến có hạ cánh; chưa ghi nhận drone phản ứng từng trục thế nào.**
 
 | Hạng mục | Tình trạng |
 |---|---|
@@ -126,14 +126,14 @@ app PC. **Console**: gõ mọi lệnh `rc` của kit và xem dòng trả về.
 | Log | `adb logcat -s ToyDrone` in mọi lệnh gửi (`TX>`), dòng kit trả (`RX<`) và sự kiện của app (`SYS`). Gói `rc p` chỉ ghi khi nội dung đổi |
 | LINK ON / OFF | **Đã thử trên kit thật (chưa có drone xác nhận)**: `rc wd 500` + `rc on` → kit báo `link 3`, `sent` tăng khoảng 126 gói/giây; `rc off` → `link 0` |
 | Bộ canh | **Đã thấy chạy**: app bị tắt lúc đang LINK ON → kit báo `lost 1`, gói chuyển sang ga `00` (`DD 80 80 00 80 ...`) |
-| Lái thật | **Đã lái một chuyến (09/10/2026, 14:26–14:29), có hạ cánh** theo lời người lái. Log phía phát: `link 3` và `lost 0` suốt chuyến, nhịp `rc p` trung vị 55–60 ms, lớn nhất 83 ms; đã gửi ga `00`…`FF`, roll `2D`…`F5`, pitch `63`…`8B`, yaw `5E`…`C8`; cờ AVOID, RETURN, LIGHT OFF có bật. **Drone phản ứng từng trục đúng chiều hay không thì chưa ghi nhận** |
+| Điều khiển thật | **Đã bay một chuyến (09/10/2026, 14:26–14:29), có hạ cánh** theo lời người điều khiển. Log phía phát: `link 3` và `lost 0` suốt chuyến, nhịp `rc p` trung vị 55–60 ms, lớn nhất 83 ms; đã gửi ga `00`…`FF`, roll `2D`…`F5`, pitch `63`…`8B`, yaw `5E`…`C8`; cờ AVOID, RETURN, LIGHT OFF có bật. **Drone phản ứng từng trục đúng chiều hay không thì chưa ghi nhận** |
 | STOP, FLIP, RESET, HEADLESS, Raw bits | **Chưa thử** |
 
 ### Lỗi đã lộ ra khi thử trên máy thật (đều đã sửa)
 
 1. **Bấm LINK ON xong 1,07 giây sau app mới gửi `rc p` đầu tiên**, vì app chờ kit báo `link 3`
    mà trạng thái chỉ được hỏi mỗi giây. Trong lúc đó bộ canh 500 ms đã kịp báo `lost 1` và phát
-   ga `00`. Sửa: app nhớ ý định của người lái (`linkWanted`) và gửi ngay, không xét trạng thái kit.
+   ga `00`. Sửa: app nhớ ý định của người điều khiển (`linkWanted`) và gửi ngay, không xét trạng thái kit.
 2. **Sau `rc off` app vẫn gửi `rc p`** cho tới khi trạng thái cập nhật, và nút vẫn ghi `LINK OFF`
    nên phải bấm hai lần. Cùng nguyên nhân, cùng cách sửa.
 3. **Đọc USB có thời hạn ngắn làm rơi byte.** Bản đầu đọc và ghi chung một luồng, mỗi vòng đọc

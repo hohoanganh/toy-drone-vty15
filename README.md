@@ -1,4 +1,4 @@
-# Lái drone đồ chơi từ máy tính — dò ngược giao thức 2,4 GHz bằng Claude Code và AK Base Kit
+# Điều khiển drone đồ chơi từ máy tính — dò ngược giao thức 2,4 GHz bằng Claude Code và AK Base Kit
 
 Một drone đồ chơi **Vecto Flying Angel VTY15** mua ngoài cửa hàng, không có tài liệu kỹ thuật, chip
 không ghi tên. Sau năm ngày (04–08/10/2026) nó **cất cánh và bay theo lệnh từ một app trên máy tính**,
@@ -52,7 +52,7 @@ byte   0   1   2   3   4   5   6   7   8   9  10  11  12
 | Cắm thiết bị, bật nguồn, bấm nút trên tay điều khiển gốc | Build, nạp firmware qua console UART, chạy từng phép đo và đọc kết quả |
 | Hàn tụ, rút ngắn dây nguồn, dán cố định drone | Tìm bảng xáo trộn và công thức CRC từ gói thô; dựng lại khung và phát thử |
 | Quan sát đèn và motor khi chưa có camera | Viết app điều khiển trên PC; điều khiển nguồn, camera, micro và máy thu SDR để tự đo |
-| Quyết định hướng đi, cho phép từng lần quay motor, **lái chuyến bay đầu tiên** | Viết tài liệu trong repo này |
+| Quyết định hướng đi, cho phép từng lần quay motor, **điều khiển chuyến bay đầu tiên** | Viết tài liệu trong repo này |
 
 Phần của người không thay được: không có ai hàn ba sợi dây vào một chip SOP-8 thì không có dữ liệu
 nào để phân tích. Phần của AI là rút ngắn mọi thứ nằm giữa hai lần hàn.
@@ -123,7 +123,7 @@ với ±275 kHz, và tay gốc xen kẽ byte 0 `DD` / `D5`.
 
 *Một gói điều khiển trên sóng: sóng mang bật ở kênh 72, ổn định khoảng 40 µs rồi tới 1 Mbps GFSK.*
 
-## Lái từ máy tính
+## Điều khiển từ máy tính
 
 <p>
   <a href="software/pc/README.md"><img src="images/15_app_pc.png" alt="Toy Drone Remote" width="720"></a>
@@ -139,7 +139,7 @@ PC ──USB/UART──> AK Base Kit 2.1 (nRF24L01+) ──2,4 GHz──> drone
 **[Bản cho Android](software/android/README.md)** — cùng kiến trúc, điện thoại nối kit qua USB OTG
 thay cho cổng COM. Điện thoại không phát trực tiếp được giao thức của drone nên kit vẫn phải nằm
 giữa. Build xanh và 15/15 test đạt (gói 13 byte đối chiếu với giá trị đo trên sóng, dòng trạng thái
-đối chiếu với kit thật); app đã chạy trên điện thoại, nối được kit và **đã lái một chuyến có hạ cánh (09/10/2026)**; drone phản
+đối chiếu với kit thật); app đã chạy trên điện thoại, nối được kit và **đã bay một chuyến có hạ cánh (09/10/2026)**; drone phản
 ứng từng trục thế nào thì chưa ghi nhận. Tải file cài: **[APK bản thử 0.1.0](https://github.com/hohoanganh/toy-drone-vty15/releases/tag/android-v0.1.0-debug)**.
 
 <p align="center">
@@ -158,7 +158,7 @@ Một phần đáng kể của công việc là bác bỏ giả thuyết của c
 | Phải gạt cần mới ghép cặp | Thử lại với tay điều khiển gốc: nó tự ghép sau khoảng 15 giây, không cần gạt |
 | Phát gói dày hơn thì drone bắt tốt hơn | Đo: nhịp 8 ms đạt 98%, 7 ms còn 75%, 6 ms còn 25% |
 | Drone tự tắt trên bàn là do tự bảo vệ khi không bay lên được | Mắc pin song song với nguồn: hết tắt. Nguyên nhân là sụt áp của nguồn bàn |
-| Drone không nghe cần lái vì gói còn thiếu gì đó | Bay thật: nó nghe. Trên bàn nó bị dán cứng nên giữ motor ở một tốc độ |
+| Drone không nghe cần điều khiển vì gói còn thiếu gì đó | Bay thật: nó nghe. Trên bàn nó bị dán cứng nên giữ motor ở một tốc độ |
 
 Vì vậy tài liệu ở đây ghi mức chắc chắn cho từng mục, và ghi rõ cái gì đã đo, cái gì mới suy ra.
 
@@ -169,7 +169,7 @@ Vì vậy tài liệu ở đây ghi mức chắc chắn cho từng mục, và gh
 | [`docs/protocol.md`](docs/protocol.md) | Đặc tả giao thức: khung trên sóng, CRC, ghép cặp, nhảy tần, gói điều khiển, bảng cờ |
 | [`docs/bench-power.md`](docs/bench-power.md) | Bàn thử: nguồn bàn thay pin, dòng theo từng lệnh, camera, tiếng motor, nghe sóng bằng ESP-SDR |
 | [`docs/remote-ak-kit-2.1.md`](docs/remote-ak-kit-2.1.md) | Tay điều khiển trên AK Base Kit 2.1: nút, menu, lệnh console |
-| [`software/`](software/README.md) | Hai app lái: [`software/pc/`](software/pc/README.md) là Toy Drone Remote cho máy tính và cách đóng gói thành exe; [`software/android/`](software/android/README.md) là bản cho điện thoại, nối kit qua USB OTG (build xanh, 15/15 test đạt, đã lái một chuyến 09/10/2026) |
+| [`software/`](software/README.md) | Hai app điều khiển: [`software/pc/`](software/pc/README.md) là Toy Drone Remote cho máy tính và cách đóng gói thành exe; [`software/android/`](software/android/README.md) là bản cho điện thoại, nối kit qua USB OTG (build xanh, 15/15 test đạt, đã bay một chuyến 09/10/2026) |
 | [`tools/`](tools/) | Script đo và phân tích: console của kit, nguồn, camera, micro, SDR |
 | [`firmware/`](firmware/) | Bản sao mã nguồn phần radio và tay điều khiển, cùng file firmware đã nạp. Mã đầy đủ ở [ak-mcu-base](https://github.com/hohoanganh/ak-mcu-base) |
 | [`captures/`](captures/) | Dữ liệu gốc: SPI phía drone, gói thô từ nRF24L01+, dòng điện theo từng lệnh |

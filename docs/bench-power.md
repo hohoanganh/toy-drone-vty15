@@ -26,7 +26,7 @@ máy thu SDR. Số liệu thô trong `captures/2026-10-08_2x_*.csv`.*
 - Kit ngừng phát thì drone coi là **mất sóng sau khoảng 2 giây**; đang quay thì motor tắt.
 - Chạy bằng **nguồn bàn phải có tụ lớn sát bo và dây ngắn**; muốn tăng ga khi motor đang quay thì
   phải có pin mắc song song. Thiếu những thứ đó, triệu chứng rất dễ bị nhầm với lỗi giao thức.
-- Drone **bị giữ chặt thì giữ bốn motor ở một tốc độ** và không đổi theo cần lái. Khi bay tự do nó
+- Drone **bị giữ chặt thì giữ bốn motor ở một tốc độ** và không đổi theo cần điều khiển. Khi bay tự do nó
   làm theo; đây là hành vi của drone, không phải lỗi của bộ phát.
 - Gói của bộ phát thử và của tay điều khiển gốc **trùng từng byte** lúc nghỉ; khác nhau ở độ lệch
   tần và ở việc tay gốc xen kẽ byte 0 `DD` / `D5`.
@@ -138,7 +138,7 @@ Nếu hai cặp motor chạy lệch nhau thì mỗi vạch phải tách làm hai
 tốc độ) và không thấy tách. Tức là khi bị giữ chặt, sau lúc khởi động drone giữ cả bốn motor ở một
 tốc độ. Cùng ngày, tháo khỏi bàn và chạy bằng pin, drone **cất cánh và làm theo roll, pitch** của cùng
 bộ phát, cùng firmware. Vậy đây là hành vi của drone khi không rời được mặt đất, và phép thử trên bàn
-không thay được việc bay thật để kiểm cần lái.
+không thay được việc bay thật để kiểm cần điều khiển.
 
 ## 5. Nghe trên sóng bằng ESP-SDR
 
